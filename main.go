@@ -19,7 +19,6 @@ func main() {
 	fmt.Scanf("%s", &netMask)
 
 	netMaskStrArr := strings.Split(netMask, ".")
-
 	var netMaskByteArr []byte
 	for i := 0; i < 4; i++ {
 		intVal, err := strconv.Atoi(netMaskStrArr[i])
