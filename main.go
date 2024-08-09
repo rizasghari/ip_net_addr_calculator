@@ -6,12 +6,6 @@ import (
 	"strings"
 )
 
-type IP struct {
-	IPV4    string
-	netMask string
-	netAddr string
-}
-
 func ipToBinary(ip string) []string {
 	octets := strings.Split(ip, ".")
 	var binary []string
@@ -21,7 +15,7 @@ func ipToBinary(ip string) []string {
 		binaryOctet := fmt.Sprintf("%08b", num)
 		binary = append(binary, binaryOctet)
 	}
-	
+
 	return binary
 }
 
@@ -38,25 +32,6 @@ func binaryToIP(binary []string) string {
 	}
 
 	return strings.Join(ip, ".")
-}
-
-func (ip *IP) calculateNetAddr() {
-	ipBinary := ipToBinary(ip.IPV4)
-	maskBinary := ipToBinary(ip.netMask)
-	if ipBinary == nil || maskBinary == nil {
-		panic("Invalid IP or mask")
-	}
-
-	var networkBinary []string
-
-	for i := 0; i < 4; i++ {
-		ipOctet, _ := strconv.ParseUint(ipBinary[i], 2, 8)
-		maskOctet, _ := strconv.ParseUint(maskBinary[i], 2, 8)
-		networkOctet := ipOctet & maskOctet
-		networkBinary = append(networkBinary, fmt.Sprintf("%08b", networkOctet))
-	}
-
-	ip.netAddr = binaryToIP(networkBinary)
 }
 
 func catchError(err error) {
