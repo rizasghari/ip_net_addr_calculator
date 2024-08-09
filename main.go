@@ -36,16 +36,4 @@ func main() {
 	}
 	v4.CalculateNetAddr()
 	fmt.Printf("%+v\n", v4)
-
-	// var ip net.IP
-	// var ipAddr string
-	// fmt.Println("Enter IPv4: ")
-	// fmt.Scanf("%s", &ipAddr)
-	// ip = net.ParseIP(ipAddr)
-	// if ip == nil {
-	// 	fmt.Println("Invalid IP")
-	// 	return
-	// }
-	// fmt.Printf("%+v\n", ip.String())
-
 }
