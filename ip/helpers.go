@@ -39,3 +39,17 @@ func catchError(err error) {
 		panic(err)
 	}
 }
+
+func GetNetMaskBytes(netMask string) []byte {
+	netMaskStrArr := strings.Split(netMask, ".")
+	var netMaskByteArr []byte
+	for _, netMask := range netMaskStrArr {
+		intVal, err := strconv.Atoi(netMask)
+		if err != nil {
+			fmt.Println("Invalid netmask")
+			return nil
+		}
+		netMaskByteArr = append(netMaskByteArr, byte(intVal))
+	}
+	return netMaskByteArr
+}
